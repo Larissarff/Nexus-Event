@@ -2,7 +2,7 @@ namespace backend.Entities;
 
     public class EventoEntity
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string Titulo { get; set; }
 
