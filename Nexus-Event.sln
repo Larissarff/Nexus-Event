@@ -1,0 +1,42 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nexus-Event", "Nexus-Event", "{F43EB4AC-5CE8-8C01-ECDD-E0CF875754CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A695330F-6BA1-B673-E336-B835DC21C59C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backend", "Nexus-Event\src\backend\backend.csproj", "{56918719-E674-6E57-E988-A1881CD5499F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BB8BBB86-99BA-96F2-FD40-D786507AB9C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backend.Tests", "Nexus-Event\src\tests\backend.Tests.csproj", "{66A2D13C-1557-BA39-C306-51BC017BE981}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56918719-E674-6E57-E988-A1881CD5499F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56918719-E674-6E57-E988-A1881CD5499F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56918719-E674-6E57-E988-A1881CD5499F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56918719-E674-6E57-E988-A1881CD5499F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66A2D13C-1557-BA39-C306-51BC017BE981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66A2D13C-1557-BA39-C306-51BC017BE981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66A2D13C-1557-BA39-C306-51BC017BE981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66A2D13C-1557-BA39-C306-51BC017BE981}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A695330F-6BA1-B673-E336-B835DC21C59C} = {F43EB4AC-5CE8-8C01-ECDD-E0CF875754CC}
+		{56918719-E674-6E57-E988-A1881CD5499F} = {A695330F-6BA1-B673-E336-B835DC21C59C}
+		{BB8BBB86-99BA-96F2-FD40-D786507AB9C7} = {A695330F-6BA1-B673-E336-B835DC21C59C}
+		{66A2D13C-1557-BA39-C306-51BC017BE981} = {BB8BBB86-99BA-96F2-FD40-D786507AB9C7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8663F196-7577-489A-BE85-463BFC767326}
+	EndGlobalSection
+EndGlobal
