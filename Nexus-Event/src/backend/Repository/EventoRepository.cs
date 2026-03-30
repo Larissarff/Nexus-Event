@@ -1,10 +1,10 @@
 using Dapper;
 using System.Data;
 using Microsoft.Data.SqlClient;
-using Backend.Entities;
+using backend.Entities;
 using backend.Entities;
 
-namespace Backend.Repositories;
+namespace backend.Repositories;
 
 public class EventoRepository
 {
