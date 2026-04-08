@@ -34,7 +34,7 @@ builder.Services.AddScoped<CupomService>();
 builder.Services.AddScoped<ReservaService>();
 
 // ✅ Seed Service
-builder.Services.AddScoped<SeedService>();
+//builder.Services.AddScoped<SeedService>();
 
 var app = builder.Build();
 
@@ -43,11 +43,11 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 // ✅ Executa o Seed ao iniciar
-using (var scope = app.Services.CreateScope())
-{
-    var seed = scope.ServiceProvider.GetRequiredService<SeedService>();
-    await seed.CriarAdminSeNaoExistir();
-}
+//using (var scope = app.Services.CreateScope())
+//{
+ //   var seed = scope.ServiceProvider.GetRequiredService<SeedService>();
+//    await seed.CriarAdminSeNaoExistir();
+//}
 
 // ==========================================
 // POST /api/usuarios
