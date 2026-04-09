@@ -1,4 +1,4 @@
-using backend.DTOs.Cupom;
+﻿using backend.DTOs.Cupom;
 using backend.DTOs.Evento;
 using backend.DTOs.Reserva;
 using backend.DTOs.Usuario;
@@ -16,9 +16,13 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirBlazor", policy =>
     {
-        policy.WithOrigins("https://localhost:7000", "http://localhost:5000")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        policy
+            .WithOrigins(
+                "https://localhost:7221",  
+                "http://localhost:5177"   
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod();
     });
 });
 
@@ -87,6 +91,37 @@ app.MapPost("/api/usuarios", async (
     {
         return Results.BadRequest(ex.Message);
     }
+});
+
+// ==========================================
+// POST /api/usuarios/login
+// ==========================================
+app.MapPost("/api/usuarios/login", async (
+    LoginUsuarioRequest request,
+    UsuarioRepository repo) =>
+{
+    if (string.IsNullOrWhiteSpace(request.Email) ||
+        string.IsNullOrWhiteSpace(request.Senha))
+        return Results.BadRequest("Email e senha são obrigatórios.");
+
+    var usuario = await repo.BuscarPorEmailAsync(request.Email);
+    if (usuario is null)
+        return Results.BadRequest("Usuário não encontrado.");
+
+    // Gera hash da senha digitada e compara
+    using var sha256 = System.Security.Cryptography.SHA256.Create();
+    var bytes = System.Text.Encoding.UTF8.GetBytes(request.Senha);
+    var hash = Convert.ToBase64String(sha256.ComputeHash(bytes));
+
+    if (usuario.SenhaHash != hash)
+        return Results.BadRequest("Senha incorreta.");
+
+    return Results.Ok(new
+    {
+        usuario.Cpf,
+        usuario.Nome,
+        usuario.Email
+    });
 });
 
 // ==========================================
