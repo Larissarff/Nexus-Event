@@ -1,12 +1,15 @@
 # NexusEvent 🎟️
 
 Sistema de venda de ingressos desenvolvido com ASP.NET Core Minimal API, Blazor WebAssembly, Dapper e SQL Server Express.
+Sistema de venda de ingressos desenvolvido com ASP.NET Core Minimal API, Blazor WebAssembly, Dapper e SQL Server Express.
 
 ## Requisitos
 
 - [.NET 9 SDK](https://dotnet.microsoft.com/download)
+- [.NET 9 SDK](https://dotnet.microsoft.com/download)
 - [SQL Server Express](https://www.microsoft.com/sql-server/sql-server-downloads)
 - [SQL Server Management Studio - SSMS](https://aka.ms/ssmsfullsetup)
+- Navegador moderno (Chrome, Edge, Firefox)
 - Navegador moderno (Chrome, Edge, Firefox)
 
 ## Instalação
@@ -63,10 +66,15 @@ dotnet restore
 cd src/frontend
 dotnet add package Microsoft.AspNetCore.Components.WebAssembly
 dotnet add package Microsoft.AspNetCore.Components.WebAssembly.DevServer
+cd src/frontend
+dotnet add package Microsoft.AspNetCore.Components.WebAssembly
+dotnet add package Microsoft.AspNetCore.Components.WebAssembly.DevServer
 dotnet restore
 ```
 
 ## Rodando o Projeto
+
+### Backend — Terminal 1
 
 ### Backend — Terminal 1
 ```bash
@@ -108,12 +116,15 @@ O sistema cria automaticamente um usuário administrador ao iniciar com base no 
 |---|---|---|
 | POST | `/api/usuarios` | Cadastra um usuário |
 | POST | `/api/usuarios/login` | Realiza login |
+| POST | `/api/usuarios/login` | Realiza login |
 | POST | `/api/eventos` | Cadastra um evento |
 | GET | `/api/eventos` | Lista todos os eventos |
 | POST | `/api/cupons` | Cadastra um cupom |
 | PUT | `/api/cupons/{codigo}/desativar` | Desativa um cupom |
+| PUT | `/api/cupons/{codigo}/desativar` | Desativa um cupom |
 | GET | `/api/reservas/{cpf}` | Lista reservas por CPF |
 | POST | `/api/reservas` | Realiza uma reserva |
+| DELETE | `/api/reservas/{id}/{cpf}` | Cancela uma reserva |
 | DELETE | `/api/reservas/{id}/{cpf}` | Cancela uma reserva |
 
 ## Exemplos de Uso
@@ -126,6 +137,15 @@ POST /api/usuarios
   "nome": "João Silva",
   "email": "joao@email.com",
   "login": "joaosilva",
+  "senha": "Senha@123"
+}
+```
+
+### Login
+```json
+POST /api/usuarios/login
+{
+  "email": "joao@email.com",
   "senha": "Senha@123"
 }
 ```
@@ -159,6 +179,9 @@ POST /api/cupons
   "valorMinimoRegra": 100.00,
   "limiteUsoPorUsuario": 2,
   "disponibilidade": true
+  "valorMinimoRegra": 100.00,
+  "limiteUsoPorUsuario": 2,
+  "disponibilidade": true
 }
 ```
 
@@ -170,6 +193,11 @@ POST /api/reservas
   "eventoId": 1,
   "codigoCupom": "DESCONTO10"
 }
+```
+
+### Cancelar Reserva
+```
+DELETE /api/reservas/1/123.456.789-00
 ```
 
 ### Cancelar Reserva
@@ -192,6 +220,7 @@ GET /api/reservas/123.456.789-00
 | R4 | Desconto só é aplicado se o preço for maior ou igual ao valor mínimo do cupom |
 
 ## Estrutura do Repositório
+
 
 ```
 NexusEvent/
@@ -216,6 +245,7 @@ NexusEvent/
 │       ├── Models/
 │       ├── Services/
 │       ├── wwwroot/
+│       ├── wwwroot/
 │       └── Program.cs
 ├── tests/
 │   └── NexusEvent.Tests/
@@ -226,6 +256,8 @@ NexusEvent/
 
 | Tecnologia | Uso |
 |---|---|
+| ASP.NET Core 9 | Minimal API Backend |
+| Blazor WebAssembly | Frontend |
 | ASP.NET Core 9 | Minimal API Backend |
 | Blazor WebAssembly | Frontend |
 | Dapper | Acesso ao banco de dados |
