@@ -265,4 +265,3 @@ NexusEvent/
 | DotNetEnv | Variáveis de ambiente |
 | xUnit | Testes automatizados |
 | Swagger | Documentação da API |
-message.txt
